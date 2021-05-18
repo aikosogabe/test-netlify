@@ -15,6 +15,9 @@ export default function Home() {
         <Link href="/posts/page1/">
           <a>page1</a>
         </Link>
+        <Link href="/posts/page2/">
+          <a>page2</a>
+        </Link>
       </main>
       <footer className={styles.footer}>フッター</footer>
     </div>
