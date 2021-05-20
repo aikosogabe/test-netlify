@@ -22,6 +22,7 @@ export default function Home({ contentData }) {
         <Head>
           <title>{contentData.data.site_name}</title>
           <link rel="icon" href="/favicon.ico" />
+          <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
         </Head>
 
         <main className={styles.main}>
