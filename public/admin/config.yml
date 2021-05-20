@@ -1,0 +1,19 @@
+backend:
+  # ローカルで検証する場合、`test-repo`を指定
+  #  name: git-gateway
+  name: test-repo
+  branch: master
+media_folder: public/img
+public_folder: img
+collections:
+  - name: home
+    label: ホーム
+    files:
+      - name: home.md
+        label: "Home"
+        file: content/home.md
+        fields:
+          - label: サイトの名前
+            name: site_name
+            widget: string
+            hint: Ex. Netlify CMS テスト
