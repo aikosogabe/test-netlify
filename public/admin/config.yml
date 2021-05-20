@@ -21,3 +21,7 @@ collections:
             name: "site_name"
             widget: "string"
             hint: "Ex. Netlify CMS テスト"
+          - label: "サイトの説明"
+            name: "site_description"
+            widget: "string"
+            hint: "Ex. このサイトはNetlify CMS テスト用に作成しました"

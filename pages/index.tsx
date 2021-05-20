@@ -27,6 +27,7 @@ export default function Home({ contentData }) {
 
         <main className={styles.main}>
           <h1 className={styles.title}>{contentData.data.site_name}</h1>
+          <p>{contentData.data.site_description}</p>
           {/* <Link href="/posts/page1/">
             <a>page1</a>
           </Link>
