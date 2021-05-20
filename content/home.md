@@ -1,5 +1,5 @@
 ---
-site_name: Netlify CMS テストページ
+site_name: CMS投稿テスト
 ---
 
 本文
