@@ -1,4 +1,4 @@
 ---
-site_name: CMS投稿テスト
-site_description: サイトの説明
+site_name: NetlifyCMSテスト！
+site_description: これはサイトの説明文！
 ---
