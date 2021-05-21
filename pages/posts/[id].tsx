@@ -41,7 +41,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({
   params,
 }: GetStaticPropsContext<Params>) {
-  const { content, data } = readContent(path.join("blog", `${params.id}.mdx`));
+  const { content, data } = readContent(path.join("blog", `${params.id}.md`));
   const processedContent = await remark().use(html).process(content);
   const contentHtml = processedContent.toString();
   return {

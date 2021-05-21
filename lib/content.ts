@@ -20,7 +20,7 @@ export function readAllArticleContents(type?: ArticleContentType) {
     type !== undefined ? path.join(contentDirectory, type) : contentDirectory;
   const fileNames = fs
     .readdirSync(fullPath)
-    .filter((fileName) => fileName.endsWith(".mdx"));
+    .filter((fileName) => fileName.endsWith(".md"));
   let allData = fileNames.map((fileName) => {
     return readContent(path.join(type, fileName));
   });
