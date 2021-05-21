@@ -5,6 +5,7 @@ import html from "remark-html";
 import path from "path";
 import Layout from "../../components/layout";
 import { readAllArticleContents, readContent } from "../../lib/content";
+import { formatDate } from "../../lib/date";
 
 type Params = { id: string };
 
@@ -15,7 +16,7 @@ export default function Post({ contentHtml, data }) {
       <br />
       {data.id}
       <br />
-      {data.date}
+      {formatDate(data.date)}
       <br />
       <div dangerouslySetInnerHTML={{ __html: contentHtml }}></div>
       <br />
@@ -40,7 +41,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({
   params,
 }: GetStaticPropsContext<Params>) {
-  const { content, data } = readContent(path.join("blog", `${params.id}.md`));
+  const { content, data } = readContent(path.join("blog", `${params.id}.mdx`));
   const processedContent = await remark().use(html).process(content);
   const contentHtml = processedContent.toString();
   return {

@@ -11,7 +11,7 @@ export function readContent(fileName: string) {
     path.join(contentDirectory, fileName),
     "utf-8"
   );
-  const { content, data } = matter(fileContents);
+  const { content, data } = JSON.parse(JSON.stringify(matter(fileContents)));
   return { content, data };
 }
 
@@ -20,14 +20,10 @@ export function readAllArticleContents(type?: ArticleContentType) {
     type !== undefined ? path.join(contentDirectory, type) : contentDirectory;
   const fileNames = fs
     .readdirSync(fullPath)
-    .filter((fileName) => fileName.endsWith(".md"));
+    .filter((fileName) => fileName.endsWith(".mdx"));
   let allData = fileNames.map((fileName) => {
     return readContent(path.join(type, fileName));
   });
-
-  console.log(fullPath);
-
-  // 投稿を日付でソートする
   return allData.sort((a, b) => {
     if (a.data.date < b.data.date) {
       return 1;

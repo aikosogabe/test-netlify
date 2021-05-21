@@ -3,6 +3,7 @@ import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import { getSortedPostsData } from "../lib/posts";
 import { readAllArticleContents, readContent } from "../lib/content";
+import { formatDate } from "../lib/date";
 
 export async function getStaticProps() {
   const homeContentData = readContent("home.md");
@@ -28,12 +29,6 @@ export default function Home({ homeContentData, allBlogData }) {
         <main className={styles.main}>
           <h1 className={styles.title}>{homeContentData.data.site_name}</h1>
           <p>{homeContentData.data.site_description}</p>
-          {/* <Link href="/posts/page1/">
-            <a>page1</a>
-          </Link>
-          <Link href="/posts/page2/">
-            <a>page2</a>
-          </Link> */}
           <h2>Blog</h2>
           <ul>
             {allBlogData.map(({ data }) => (
@@ -44,7 +39,7 @@ export default function Home({ homeContentData, allBlogData }) {
                 <br />
                 {data.id}
                 <br />
-                {data.date}
+                {formatDate(data.date)}
               </li>
             ))}
           </ul>
