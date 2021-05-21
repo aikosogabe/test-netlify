@@ -1,9 +1,10 @@
 backend:
+  # name: test-repo
   name: git-gateway
   branch: master
 
-media_folder: public/img
-public_folder: img
+media_folder: "public/images/upload"
+public_folder: "/images/upload"
 publish_mode: editorial_workflow
 
 collections:
@@ -25,3 +26,36 @@ collections:
             name: "site_description"
             widget: "string"
             hint: "Ex. このサイトはNetlify CMS テスト用に作成しました"
+  - name: "blog-articles"
+    label: "ブログ"
+    create: true
+    delete: true
+    editor:
+      preview: false
+    slug: "{{id}}"
+    identifier_field: id
+    folder: "content/blog"
+    fields:
+      - label: "URLに含まれるID"
+        name: "id"
+        wiget: string
+        pattern:
+          - "[a-z0-9][a-z0-9\\-]+[a-z0-9]"
+          - "数値とアルファベットのIDを指定してください"
+        hint: "Ex. sample-page"
+      - label: "日付"
+        name: "date"
+        widget: date
+        format: "YYYY-MM-DD"
+      - label: "タイトル"
+        name: "title"
+        widget: string
+      - label: "説明"
+        name: "description"
+        widget: string
+      - label: "サムネイル画像"
+        name: "image"
+        widget: image
+      - label: 本文
+        name: body
+        widget: markdown

@@ -1,18 +1,24 @@
+import { GetStaticPropsContext } from "next";
 import Link from "next/link";
+import remark from "remark";
+import html from "remark-html";
+import path from "path";
 import Layout from "../../components/layout";
-import { getAllPostIds, getPostData } from "../../lib/posts";
+import { readAllArticleContents, readContent } from "../../lib/content";
 
-export default function Post({ postData }) {
+type Params = { id: string };
+
+export default function Post({ contentHtml, data }) {
   return (
     <Layout>
-      {/* {postData.title}
+      {data.title}
       <br />
-      {postData.id}
+      {data.id}
       <br />
-      {postData.date}
+      {data.date}
       <br />
-      <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }}></div>
-      <br /> */}
+      <div dangerouslySetInnerHTML={{ __html: contentHtml }}></div>
+      <br />
       <Link href="/">
         <a>Back to home</a>
       </Link>
@@ -21,16 +27,23 @@ export default function Post({ postData }) {
 }
 
 export async function getStaticPaths() {
-  const paths = getAllPostIds();
+  const articles = readAllArticleContents("blog");
+  const paths = articles.map(({ data }) => {
+    return { params: { id: data.id } };
+  });
   return {
     paths,
     fallback: false,
   };
 }
 
-export async function getStaticProps({ params }) {
-  const postData = await getPostData(params.id);
+export async function getStaticProps({
+  params,
+}: GetStaticPropsContext<Params>) {
+  const { content, data } = readContent(path.join("blog", `${params.id}.md`));
+  const processedContent = await remark().use(html).process(content);
+  const contentHtml = processedContent.toString();
   return {
-    props: { postData },
+    props: { contentHtml, data },
   };
 }
