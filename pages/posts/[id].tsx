@@ -16,7 +16,7 @@ export default function Post({ contentHtml, data }) {
       <p>{formatDate(data.date)}</p>
       <div>
         <picture>
-          <source media="(min-width: 800px)" srcSet={data.image} />
+          <source media="(min-width: 769px)" srcSet={data.image} />
           {data.image_sp && (
             <source media="(max-width: 768px)" srcSet={data.image_sp} />
           )}
