@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
-import { getSortedPostsData } from "../lib/posts";
 import { readAllArticleContents, readContent } from "../lib/content";
 import { formatDate } from "../lib/date";
 
@@ -36,8 +35,6 @@ export default function Home({ homeContentData, allBlogData }) {
                 <Link href={`/posts/${data.id}`}>
                   <a>{data.title}</a>
                 </Link>
-                <br />
-                {data.id}
                 <br />
                 {formatDate(data.date)}
               </li>
