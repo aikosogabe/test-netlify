@@ -12,16 +12,20 @@ type Params = { id: string };
 export default function Post({ contentHtml, data }) {
   return (
     <Layout>
-      {data.title}
-      <br />
-      {data.id}
-      <br />
-      {formatDate(data.date)}
-      <br />
+      <h1>{data.title}</h1>
+      <p>{formatDate(data.date)}</p>
+      <div>
+        <picture>
+          <source media="(min-width: 800px)" srcSet={data.image} />
+          {data.image_sp && (
+            <source media="(max-width: 768px)" srcSet={data.image_sp} />
+          )}
+          <img src={data.image} alt={data.image_alt ? data.image_alt : ""} />
+        </picture>
+      </div>
       <div dangerouslySetInnerHTML={{ __html: contentHtml }}></div>
-      <br />
       <Link href="/">
-        <a>Back to home</a>
+        <a>← Back to home</a>
       </Link>
     </Layout>
   );

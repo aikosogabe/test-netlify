@@ -56,6 +56,14 @@ collections:
       - label: "サムネイル画像"
         name: "image"
         widget: image
+      - label: "サムネイル画像（768px以下）"
+        name: "image_sp"
+        widget: image
+        required: false
+      - label: "画像の説明"
+        name: "image_alt"
+        widget: string
+        required: false
       - label: 本文
         name: body
         widget: markdown
