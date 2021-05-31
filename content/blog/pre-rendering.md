@@ -3,7 +3,8 @@ id: pre-rendering
 date: 2020-01-01
 title: Two Forms of Pre-rendering
 description: dummy description pre-rendering
-image: https://placehold.jp/320x200.png?text=image
+image: /images/upload/dummy2.png
+image_sp: /images/upload/dummy3.png
 ---
 
 Next.js has two forms of pre-rendering: **Static Generation** and **Server-side Rendering**. The difference is in **when** it generates the HTML for a page.
