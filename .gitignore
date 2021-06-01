@@ -8,7 +8,7 @@
 
 # Dependency directories
 node_modules/
-public/denerated/
+public/generated/
 
 # Logs
 npm-debug.log*
