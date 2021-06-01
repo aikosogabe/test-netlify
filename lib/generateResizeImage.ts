@@ -5,7 +5,7 @@ import sharp from "sharp";
 const publicDir = path.join(process.cwd(), "public");
 const generatedDir = path.join(publicDir, "generated");
 
-export async function generateWebpImage(imagePath: string) {
+export async function generateWebpImage(imagePath: string, width: number) {
   const imageFullPath = path.join(publicDir, imagePath);
 
   const dir = path.dirname(imagePath);
@@ -21,18 +21,21 @@ export async function generateWebpImage(imagePath: string) {
   const basename = path.basename(imageFullPath, ext);
 
   const sharpStream = await sharp(imageFullPath);
-  await sharpStream.clone().toFile(
-    path.format({
-      dir: dest,
-      name: basename,
-      ext: ".webp",
-    })
-  );
+  await sharpStream
+    .clone()
+    .resize({ width })
+    .toFile(
+      path.format({
+        dir: dest,
+        name: basename,
+        ext: ext,
+      })
+    );
 
   const srcPath = path.join(
     "/generated",
     dir,
-    path.format({ name: basename, ext: ".webp" })
+    path.format({ name: basename, ext: ext })
   );
 
   return srcPath;
