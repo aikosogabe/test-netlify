@@ -3,6 +3,7 @@ import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import { readAllArticleContents, readContent } from "../lib/content";
 import { formatDate } from "../lib/date";
+import { NextSeo } from "next-seo";
 
 export async function getStaticProps() {
   const homeContentData = readContent("home.md");
@@ -20,10 +21,24 @@ export default function Home({ homeContentData, allBlogData }) {
     <>
       <div className={styles.container}>
         <Head>
-          <title>{homeContentData.data.site_name}</title>
           <link rel="icon" href="/favicon.ico" />
           <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
         </Head>
+        <NextSeo
+          title={homeContentData.data.site_name}
+          description={homeContentData.data.description}
+          openGraph={{
+            type: "website",
+            title: homeContentData.data.site_name,
+            description: homeContentData.data.description,
+            url: `https://brave-lalande-0e6115.netlify.app`,
+            images: [
+              {
+                url: `https://brave-lalande-0e6115.netlify.app/images/upload/1200x900.png`,
+              },
+            ],
+          }}
+        />
 
         <main className={styles.main}>
           <h1 className={styles.title}>{homeContentData.data.site_name}</h1>

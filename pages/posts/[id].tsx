@@ -12,7 +12,7 @@ import { useRouter } from "next/router";
 
 type Params = { id: string };
 
-export default function Post({ contentHtml, data, imageUrls }) {
+export default function Post({ contentHtml, data }) {
   const router = useRouter();
   return (
     <>
@@ -20,6 +20,10 @@ export default function Post({ contentHtml, data, imageUrls }) {
         title={data.title}
         description={data.description}
         openGraph={{
+          article: {
+            authors: ["aikosogabe"],
+            tags: ["test", "blog"],
+          },
           title: data.title,
           description: data.description,
           url: `https://brave-lalande-0e6115.netlify.app${router.asPath}`,
@@ -34,7 +38,7 @@ export default function Post({ contentHtml, data, imageUrls }) {
         <h1>{data.title}</h1>
         <p>{formatDate(data.date)}</p>
         <div>
-          <picture>
+          {/* <picture>
             {imageUrls.srcSetWebp && (
               <source srcSet={imageUrls.srcSetWebp} type="image/webp" />
             )}
@@ -58,7 +62,7 @@ export default function Post({ contentHtml, data, imageUrls }) {
               src={imageUrls.srcSet}
               alt={imageUrls.altText ? imageUrls.altText : ""}
             />
-          </picture>
+          </picture> */}
         </div>
         <div dangerouslySetInnerHTML={{ __html: contentHtml }}></div>
         <Link href="/">
@@ -87,9 +91,9 @@ export async function getStaticProps({
   const processedContent = await remark().use(html).process(content);
   const contentHtml = processedContent.toString();
 
-  const imageUrls = await createHeaderImageData(data.image, data.image_sp);
+  // const imageUrls = await createHeaderImageData(data.image, data.image_sp);
 
   return {
-    props: { contentHtml, data, imageUrls },
+    props: { contentHtml, data },
   };
 }
