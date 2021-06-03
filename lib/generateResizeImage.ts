@@ -5,7 +5,7 @@ import sharp from "sharp";
 const publicDir = path.join(process.cwd(), "public");
 const generatedDir = path.join(publicDir, "generated");
 
-export async function generateWebpImage(imagePath: string, width: number) {
+export async function generateResizeImage(imagePath: string, width: number) {
   const imageFullPath = path.join(publicDir, imagePath);
 
   const dir = path.dirname(imagePath);
