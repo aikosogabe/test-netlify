@@ -110,13 +110,6 @@
   dependencies:
     "@types/unist" "*"
 
-"@types/next-seo@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@types/next-seo/-/next-seo-2.1.2.tgz#ca666805eb21ca120551868b9a29fce6c65a3bf7"
-  integrity sha512-vn6nCBli9++YeGaP//bzekTYaRntbT1q3lEcwtaVU/qECuAfWFClX9NvgWZvKVibYzAhKc8AKQ9xE70/GySQLw==
-  dependencies:
-    next-seo "*"
-
 "@types/node@*", "@types/node@^15.3.0":
   version "15.3.0"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-15.3.0.tgz#d6fed7d6bc6854306da3dea1af9f874b00783e26"
@@ -1546,7 +1539,7 @@ native-url@0.3.4:
   dependencies:
     querystring "^0.2.0"
 
-next-seo@*, next-seo@^4.24.0:
+next-seo@^4.24.0:
   version "4.24.0"
   resolved "https://registry.yarnpkg.com/next-seo/-/next-seo-4.24.0.tgz#7c0447da00b8574dcda5c6979771a7f6efd24f55"
   integrity sha512-9VQXfXAelhE+hAWzJ4azigQaW3FPX0kU0eYKFQXKsQjgY7AWtukjRGXls0oSIk8khhDJwmCt46EwsO9n5DDW6Q==
