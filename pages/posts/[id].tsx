@@ -20,6 +20,7 @@ export default function Post({ contentHtml, data }) {
         title={data.title}
         description={data.description}
         openGraph={{
+          type: "article",
           article: {
             authors: ["aikosogabe"],
             tags: ["test", "blog"],
