@@ -1,14 +1,11 @@
 import { generateWebpImage } from "../lib/generateWebpImage";
 
 export const artDirectionImage = async (
-  src: string,
-  mobileSrc: string,
-  altText?: string
+  srcSet: string,
+  srcSetMobile: string,
+  srcSetWebp?: string,
+  srcSetWebpMobile?: string
 ) => {
-  const srcSet = src;
-  const srcSetMobile = mobileSrc;
-  const srcSetWebp = await generateWebpImage(srcSet);
-  const srcSetWebpMobile = await generateWebpImage(srcSetMobile);
   return (
     <div>
       <picture>
@@ -32,7 +29,7 @@ export const artDirectionImage = async (
           <source srcSet={srcSetMobile} media="(max-width: 768px)" />
         )}
 
-        <img src={srcSet} alt={altText ? altText : ""} />
+        <img src={srcSet} alt="" />
       </picture>
     </div>
   );

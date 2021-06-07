@@ -1,16 +1,16 @@
 import { generateWebpImage } from "./generateWebpImage";
 
-export type HeaderImageData = {
+export type ImageData = {
   srcSet: string;
   srcSetMobile: string;
   srcSetWebp: string;
   srcSetWebpMobile: string;
 };
 
-export const createHeaderImageData = async (
+export const createImageData = async (
   src: string,
   mobileSrc: string
-): Promise<HeaderImageData> => {
+): Promise<ImageData> => {
   const srcSet = src;
   const srcSetMobile = mobileSrc;
   const srcSetWebp = await generateWebpImage(srcSet);

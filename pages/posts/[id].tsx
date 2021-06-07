@@ -5,7 +5,7 @@ import html from "remark-html";
 import path from "path";
 import Layout from "../../components/layout";
 import { readAllArticleContents, readContent } from "../../lib/content";
-import { createHeaderImageData } from "../../lib/createHeaderImageData";
+import { createImageData } from "../../lib/createImageData";
 import { formatDate } from "../../lib/date";
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
@@ -39,7 +39,7 @@ export default function Post({ contentHtml, data }) {
         <h1>{data.title}</h1>
         <p>{formatDate(data.date)}</p>
         <div>
-          {/* <picture>
+          <picture>
             {imageUrls.srcSetWebp && (
               <source srcSet={imageUrls.srcSetWebp} type="image/webp" />
             )}
@@ -63,7 +63,7 @@ export default function Post({ contentHtml, data }) {
               src={imageUrls.srcSet}
               alt={imageUrls.altText ? imageUrls.altText : ""}
             />
-          </picture> */}
+          </picture>
         </div>
         <div dangerouslySetInnerHTML={{ __html: contentHtml }}></div>
         <Link href="/">
@@ -92,7 +92,7 @@ export async function getStaticProps({
   const processedContent = await remark().use(html).process(content);
   const contentHtml = processedContent.toString();
 
-  // const imageUrls = await createHeaderImageData(data.image, data.image_sp);
+  // const imageUrls = await createImageData(data.image, data.image_sp);
 
   return {
     props: { contentHtml, data },
