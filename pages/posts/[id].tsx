@@ -9,6 +9,7 @@ import { createImageData } from "../../lib/createImageData";
 import { formatDate } from "../../lib/date";
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 type Params = { id: string };
 
@@ -39,7 +40,8 @@ export default function Post({ contentHtml, data }) {
         <h1>{data.title}</h1>
         <p>{formatDate(data.date)}</p>
         <div>
-          <picture>
+          <Image src={data.image} width={600} height={450} />
+          {/* <picture>
             {imageUrls.srcSetWebp && (
               <source srcSet={imageUrls.srcSetWebp} type="image/webp" />
             )}
@@ -63,7 +65,7 @@ export default function Post({ contentHtml, data }) {
               src={imageUrls.srcSet}
               alt={imageUrls.altText ? imageUrls.altText : ""}
             />
-          </picture>
+          </picture> */}
         </div>
         <div dangerouslySetInnerHTML={{ __html: contentHtml }}></div>
         <Link href="/">
